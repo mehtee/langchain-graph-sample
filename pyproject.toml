@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "llm-benchmark"
+version = "0.1.0"
+description = "Multi-provider LLM benchmarking framework"
+authors = ["Mahdi Rasouli <mahdi.rasouli78@gmail.com>"]
+readme = "README.md"
+
+packages = [
+    { include = "src" }
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+langchain-openai = "^0.3.0"
+langchain-google-genai = "^2.0.0"
+langchain-qwq = "^0.3.0"
+langgraph = "^0.2.0"
+langchain-core = "^0.3.0"
+pydantic = "^2.0.0"
+pyyaml = "^6.0"
+python-dotenv = "^1.0.0"
+
+[[tool.poetry.source]]
+name = "runflare"
+url = "https://mirror-pypi.runflare.com/simple/"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

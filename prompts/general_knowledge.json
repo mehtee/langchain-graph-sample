@@ -1,0 +1,18 @@
+{
+  "system_prompt": "You are a helpful AI assistant. Answer questions accurately and concisely.",
+  "test_prompt": "What is the capital of France? Provide the city name and a brief explanation of why it's significant.",
+  "nodes": {
+    "analyze": {
+      "prompt": "Analyze this problem carefully:\n\n{problem}\n\nIdentify:\n1. What type of problem this is\n2. Key constraints or requirements\n3. The best approach to solve it",
+      "system_prompt_included": true
+    },
+    "solve": {
+      "prompt": "Based on this analysis:\n\n{analysis_summary}\n\nNow solve this problem:\n{problem}\n\nProvide:\n1. Your final answer\n2. Step-by-step reasoning\n3. Your confidence level (high/medium/low)",
+      "system_prompt_included": true
+    },
+    "verify": {
+      "prompt": "Verify this solution:\n\nOriginal Problem:\n{problem}\n\nProposed Solution:\n{solution_summary}\n\nCheck:\n1. Is the solution correct?\n2. Are there any issues or concerns?\n3. What is the final verified answer?",
+      "system_prompt_included": true
+    }
+  }
+}

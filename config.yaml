@@ -1,0 +1,34 @@
+providers:
+  openrouter:
+    base_url: "https://openrouter.ai/api/v1"
+    api_key_env: "OPENROUTER_API_KEY"
+    # supports_system_prompt: true  # Default - can be omitted
+    models:
+      - "openai/gpt-4.1-mini"
+      - "google/gemma-3-4b-it"
+      - "google/gemma-3-27b-it"
+      - "google/gemma-3-12b-it"
+      - "qwen/qwen3-coder-30b-a3b-instruct"
+  
+  avvalai:
+    base_url: "https://api.avalai.ir/v1"
+    api_key_env: "AVVALAI_API_KEY"
+    supports_system_prompt: false  # AvvalAI models don't support system prompts
+    models:
+      - "cf.gemma-3-12b-it"
+      - "gemma-3-4b-it"
+      - "gemma-3-27b-it"
+  
+  # ollama:
+  #   base_url: "http://87.236.166.186:8080"
+  #   api_key_env: "OLLAMA_API_KEY"
+  #   # supports_system_prompt: true  # Default
+  #   models:
+  #     - "gemma3:27b"
+  #     - "gemma3:12b"
+  #     - "gemma3:4b"
+  #     - "qwen3-coder:30b"
+
+output:
+  results_dir: "results"
+  logs_dir: "logs"

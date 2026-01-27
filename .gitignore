@@ -1,0 +1,100 @@
+# Environment
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Poetry
+poetry.lock
+poetry.toml
+
+# Virtual environments
+bin/
+lib/
+lib64
+include/
+
+# Output directories (generated at runtime)
+results/
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python coverage
+.coverage
+htmlcov/
+.coverage.*
+*.cover
+*.log
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environments
+.env.local
+.env.production
+.env.development
+
+# Pytest
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+
+# ruff
+.ruff_cache/
+
+# Built documentation
+docs/_build/
+
+# Package builds
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.temp
+
+# IDE specific
+*.sublime-project
+*.sublime-workspace
+*.vscode/
+*.idea/
+
+# macOS
+.DS_Store
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Except these files
+!.gitignore
+!README.md
+!pyproject.toml
+!config.yaml
+!prompts/*.json
+!src/*.py
+!main.py
+!run_benchmark.py
+!requirements.txt
