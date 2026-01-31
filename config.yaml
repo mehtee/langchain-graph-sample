@@ -3,6 +3,7 @@ providers:
     base_url: "https://openrouter.ai/api/v1"
     api_key_env: "OPENROUTER_API_KEY"
     # supports_system_prompt: true  # Default - can be omitted
+    # timeout: 60  # Optional: timeout in seconds (default is 60)
     models:
       - "openai/gpt-4.1-mini"
       - "google/gemma-3-4b-it"
@@ -14,6 +15,7 @@ providers:
     base_url: "https://api.avalai.ir/v1"
     api_key_env: "AVVALAI_API_KEY"
     supports_system_prompt: false  # AvvalAI models don't support system prompts
+    # timeout: 60  # Optional: timeout in seconds (default is 60)
     models:
       - "cf.gemma-3-12b-it"
       - "gemma-3-4b-it"
@@ -23,12 +25,29 @@ providers:
   #   base_url: "http://87.236.166.186:8080"
   #   api_key_env: "OLLAMA_API_KEY"
   #   # supports_system_prompt: true  # Default
+  #   # timeout: 60  # Optional: timeout in seconds (default is 60)
   #   models:
   #     - "gemma3:27b"
   #     - "gemma3:12b"
   #     - "gemma3:4b"
   #     - "qwen3-coder:30b"
+  
+  arvancloud:
+    base_url: "https://arvancloudai.ir/gateway/models/Qwen3-30B-A3B/eQfk5lILBJ5vs3qB1BrRHeIAsxbjKuyO9Preh28IQgIyik3nBtTFcBfKde82lSTc-JZ154iaFatrp56AOcdwfKxXhfY9PuZO_Kq2WmjATB_pIUxPFhLwdYqdQtFKFMz6NUsW9s2fayzeB_nFbzcSERXl68-Gwoi3BGkXmfarkM60FsV9CzGFtZBod0OABqeaxpyruuadgKnXw4zhGdfPFiitpCsMc7CcptVg7jnEdWAdsSWkj5JR0i2rj9ea4noW/v1"
+    api_key_env: "ARVAN_API_KEY"
+    # supports_system_prompt: true  # Default
+    timeout: 120  # Timeout in seconds for ArvanCloud (server is very slow - takes 20-30s per request)
+    default_headers:
+      User-Agent: "Wn/JS 6.15.0"
+      Origin: "https://panel.arvancloud.ir"
+      Referer: "https://panel.arvancloud.ir/"
+    models:
+      - "Qwen3-30B-A3B"
 
 output:
   results_dir: "results"
   logs_dir: "logs"
+
+# Concurrency settings
+concurrency:
+  max_workers: 10  # Maximum number of concurrent model executions (default: number of models)

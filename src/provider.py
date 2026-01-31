@@ -41,11 +41,19 @@ class LLMProvider:
         
         self.logger.info(f"Initializing client for {self.provider_name}/{self.model_name}")
         
+        # Get timeout from config, default to 60 seconds
+        timeout_seconds = self.provider_config.get('timeout', 60)
+        
+        # Get default headers from config (for providers that require specific headers like ArvanCloud)
+        default_headers = self.provider_config.get('default_headers', {})
+        
         return ChatOpenAI(
             model=self.model_name,
             api_key=api_key,
             base_url=self.provider_config['base_url'],
             temperature=0.7,
+            request_timeout=timeout_seconds,
+            default_headers=default_headers if default_headers else None,
         )
     
     def get_client(self) -> ChatOpenAI:

@@ -104,6 +104,11 @@ class Config:
     def logs_dir(self) -> str:
         return self._config['output']['logs_dir']
     
+    @property
+    def max_workers(self) -> int:
+        """Get maximum number of concurrent workers."""
+        return self._config.get('concurrency', {}).get('max_workers', None)
+    
     def get_api_key(self, env_var: str) -> str:
         """Get API key from environment variable."""
         api_key = os.getenv(env_var)
