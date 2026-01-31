@@ -31,18 +31,6 @@ providers:
   #     - "gemma3:12b"
   #     - "gemma3:4b"
   #     - "qwen3-coder:30b"
-  
-  arvancloud:
-    base_url: "https://arvancloudai.ir/gateway/models/Qwen3-30B-A3B/eQfk5lILBJ5vs3qB1BrRHeIAsxbjKuyO9Preh28IQgIyik3nBtTFcBfKde82lSTc-JZ154iaFatrp56AOcdwfKxXhfY9PuZO_Kq2WmjATB_pIUxPFhLwdYqdQtFKFMz6NUsW9s2fayzeB_nFbzcSERXl68-Gwoi3BGkXmfarkM60FsV9CzGFtZBod0OABqeaxpyruuadgKnXw4zhGdfPFiitpCsMc7CcptVg7jnEdWAdsSWkj5JR0i2rj9ea4noW/v1"
-    api_key_env: "ARVAN_API_KEY"
-    # supports_system_prompt: true  # Default
-    timeout: 120  # Timeout in seconds for ArvanCloud (server is very slow - takes 20-30s per request)
-    default_headers:
-      User-Agent: "Wn/JS 6.15.0"
-      Origin: "https://panel.arvancloud.ir"
-      Referer: "https://panel.arvancloud.ir/"
-    models:
-      - "Qwen3-30B-A3B"
 
 output:
   results_dir: "results"
