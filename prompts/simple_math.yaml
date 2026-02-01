@@ -1,0 +1,29 @@
+system_prompt: "You are a helpful math assistant."
+
+test_prompt: "What is 25 + 17?"
+
+agents:
+  analyze:
+    system_prompt_included: true
+    prompt: |
+      Analyze this math problem: {problem}
+      
+      Identify the type of calculation needed.
+  
+  solve:
+    system_prompt_included: true
+    prompt: |
+      Based on the analysis: {analysis_summary}
+      
+      Solve this problem: {problem}
+      
+      Show your work step by step.
+  
+  verify:
+    system_prompt_included: true
+    prompt: |
+      Verify this solution:
+      Problem: {problem}
+      Solution: {solution_summary}
+      
+      Check if the answer is correct.

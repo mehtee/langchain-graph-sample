@@ -5,10 +5,10 @@ providers:
     # supports_system_prompt: true  # Default - can be omitted
     # timeout: 60  # Optional: timeout in seconds (default is 60)
     models:
-      - "openai/gpt-4.1-mini"
-      - "google/gemma-3-4b-it"
-      - "google/gemma-3-27b-it"
-      - "google/gemma-3-12b-it"
+      # - "openai/gpt-4.1-mini"
+      # - "google/gemma-3-4b-it"
+      # - "google/gemma-3-27b-it"
+      # - "google/gemma-3-12b-it"
       - "qwen/qwen3-coder-30b-a3b-instruct"
   
   avvalai:
@@ -18,8 +18,8 @@ providers:
     # timeout: 60  # Optional: timeout in seconds (default is 60)
     models:
       - "cf.gemma-3-12b-it"
-      - "gemma-3-4b-it"
-      - "gemma-3-27b-it"
+      # - "gemma-3-4b-it"
+      # - "gemma-3-27b-it"
   
   # ollama:
   #   base_url: "http://87.236.166.186:8080"

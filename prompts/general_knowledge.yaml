@@ -1,0 +1,43 @@
+system_prompt: "You are a helpful AI assistant. Answer questions accurately and concisely."
+test_prompt: "What is the capital of France? Provide the city name and a brief explanation of why it's significant."
+nodes:
+  analyze:
+    prompt: |
+      Analyze this problem carefully:
+
+      {problem}
+
+      Identify:
+      1. What type of problem this is
+      2. Key constraints or requirements
+      3. The best approach to solve it
+    system_prompt_included: true
+  solve:
+    prompt: |
+      Based on this analysis:
+
+      {analysis_summary}
+
+      Now solve this problem:
+      {problem}
+
+      Provide:
+      1. Your final answer
+      2. Step-by-step reasoning
+      3. Your confidence level (high/medium/low)
+    system_prompt_included: true
+  verify:
+    prompt: |
+      Verify this solution:
+
+      Original Problem:
+      {problem}
+
+      Proposed Solution:
+      {solution_summary}
+
+      Check:
+      1. Is the solution correct?
+      2. Are there any issues or concerns?
+      3. What is the final verified answer?
+    system_prompt_included: true

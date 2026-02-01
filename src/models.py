@@ -1,5 +1,5 @@
 """Pydantic models for structured output."""
-from typing import List, Optional
+from typing import List, Optional, TypedDict
 from pydantic import BaseModel, Field
 
 
@@ -24,10 +24,23 @@ class Verification(BaseModel):
     final_answer: str = Field(description="The verified final answer")
 
 
-class GraphState(BaseModel):
-    """State passed through the graph."""
+class GraphState(TypedDict, total=False):
+    """State passed through the graph.
+    
+    Uses TypedDict (not Pydantic BaseModel) as required by LangGraph.
+    Includes both data and configuration that agents need.
+    """
+    # Core data
     problem: str
-    analysis: Optional[ProblemAnalysis] = None
-    solution: Optional[Solution] = None
-    verification: Optional[Verification] = None
-    error: Optional[str] = None
+    analysis: Optional[ProblemAnalysis]
+    solution: Optional[Solution]
+    verification: Optional[Verification]
+    error: Optional[str]
+    
+    # Configuration (passed through state instead of agent properties)
+    system_prompt: Optional[str]
+    use_system_prompt: Optional[bool]
+    prompt_name: Optional[str]
+    analyze_prompt: Optional[str]
+    solve_prompt: Optional[str]
+    verify_prompt: Optional[str]

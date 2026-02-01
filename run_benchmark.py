@@ -24,7 +24,7 @@ def list_available_prompts(prompts_dir: str = "prompts"):
         print(f"Error: Prompts directory '{prompts_dir}' not found")
         return []
     
-    files = sorted([f.stem for f in prompts_path.glob("*.json")])
+    files = sorted([f.stem for f in prompts_path.glob("*.yaml")])
     return files
 
 
@@ -33,7 +33,7 @@ def main():
     parser.add_argument(
         "--prompt", 
         type=str, 
-        help="Run specific prompt file (without .json extension)"
+        help="Run specific prompt file (without .yaml extension)"
     )
     parser.add_argument(
         "--list", 

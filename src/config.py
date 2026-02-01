@@ -3,7 +3,6 @@ import os
 from typing import Dict, List, Any, Optional
 from pathlib import Path
 import yaml
-import json
 from dotenv import load_dotenv
 
 
@@ -25,25 +24,25 @@ class Config:
             return yaml.safe_load(f)
     
     def _scan_prompt_files(self) -> List[str]:
-        """Scan the prompts directory for JSON files."""
+        """Scan the prompts directory for YAML files."""
         if not self.prompts_dir.exists():
             return []
         
         files = []
-        for file_path in self.prompts_dir.glob("*.json"):
+        for file_path in self.prompts_dir.glob("*.yaml"):
             if file_path.is_file():
-                files.append(file_path.stem)  # Store without .json extension
+                files.append(file_path.stem)  # Store without .yaml extension
         return sorted(files)
     
     def _load_prompt_file(self, name: str) -> Optional[Dict[str, Any]]:
         """Load a specific prompt file."""
-        file_path = self.prompts_dir / f"{name}.json"
+        file_path = self.prompts_dir / f"{name}.yaml"
         
         if not file_path.exists():
             return None
         
         with open(file_path, 'r') as f:
-            return json.load(f)
+            return yaml.safe_load(f)
     
     def _setup_directories(self) -> None:
         """Create output directories if they don't exist."""
@@ -52,11 +51,11 @@ class Config:
     
     @property
     def available_prompts(self) -> List[str]:
-        """Get list of available prompt file names (without .json)."""
+        """Get list of available prompt file names (without .yaml extension)."""
         return self._available_prompts
     
     def get_prompt(self, name: str) -> Optional[Dict[str, Any]]:
-        """Get prompt configuration by name (without .json extension)."""
+        """Get prompt configuration by name (without .yaml extension)."""
         if name not in self._prompts_cache:
             prompt_data = self._load_prompt_file(name)
             if prompt_data:
@@ -71,26 +70,26 @@ class Config:
             return self.get_prompt(self._available_prompts[0])
         return None
     
-    def get_node_prompt(self, prompt_name: str, node_name: str, 
+    def get_agent_prompt(self, prompt_name: str, agent_name: str, 
                        default_template: str = "") -> str:
-        """Get prompt template for a specific node."""
+        """Get prompt template for a specific agent."""
         prompt_data = self.get_prompt(prompt_name)
         if not prompt_data:
             return default_template
         
-        nodes = prompt_data.get('nodes', {})
-        node_config = nodes.get(node_name, {})
-        return node_config.get('prompt', default_template)
+        agents = prompt_data.get('agents', {})
+        agent_config = agents.get(agent_name, {})
+        return agent_config.get('prompt', default_template)
     
-    def get_node_system_prompt_flag(self, prompt_name: str, node_name: str) -> bool:
-        """Check if system prompt should be included for a node."""
+    def get_agent_system_prompt_flag(self, prompt_name: str, agent_name: str) -> bool:
+        """Check if system prompt should be included for an agent."""
         prompt_data = self.get_prompt(prompt_name)
         if not prompt_data:
             return True  # Default to True
         
-        nodes = prompt_data.get('nodes', {})
-        node_config = nodes.get(node_name, {})
-        return node_config.get('system_prompt_included', True)
+        agents = prompt_data.get('agents', {})
+        agent_config = agents.get(agent_name, {})
+        return agent_config.get('system_prompt_included', True)
     
     @property
     def providers(self) -> Dict[str, Any]:
